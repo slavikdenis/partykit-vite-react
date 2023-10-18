@@ -1,6 +1,7 @@
 # Logs
 
 logs
+*.log
 _.log
 npm-debug.log_
 yarn-debug.log*
@@ -168,3 +169,16 @@ dist
 
 .partykit
 .DS_Store
+
+dist-ssr
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

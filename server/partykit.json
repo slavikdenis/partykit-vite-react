@@ -1,0 +1,5 @@
+{
+  "name": "partykit-reddit-voting",
+  "main": "src/server.ts",
+  "compatibilityDate": "2023-10-18"
+}
