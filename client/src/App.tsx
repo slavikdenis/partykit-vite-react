@@ -1,48 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import usePartySocket from 'partysocket/react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
+import { Reactions } from './components/Reactions';
+import { getPostId } from './utils';
 
 function App() {
-	const [count, setCount] = useState(0);
-
-	const timeout = useRef<number | null>(null);
-	const add = (text: string) => {
-		console.log('Adding text', text);
-	};
-
-	const conn = usePartySocket({
-		// usePartySocket takes the same arguments as PartySocket.
-		host: 'http://localhost:1999', // or localhost:1999 in dev
-		room: 'my-room',
-
-		// in addition, you can provide socket lifecycle event handlers
-		// (equivalent to using ws.addEventListener in an effect hook)
-		onOpen() {
-			add('Connected');
-			add('Sending a ping every 2 seconds...');
-		},
-		onMessage(e) {
-			add(`Receiver -> ${e.data}`);
-		},
-		onClose() {
-			add('Closed');
-		},
-		onError(e) {
-			add(`Error -> ${JSON.stringify(e)}`);
-		},
-	});
-
-	useEffect(() => {
-		timeout.current = setInterval(() => {
-			conn.send('ping');
-		}, 2000);
-
-		return () => {
-			timeout.current && clearInterval(timeout.current);
-		};
-	}, []);
+  const postID = getPostId();
 
 	return (
 		<>
@@ -56,9 +19,8 @@ function App() {
 			</div>
 			<h1>Vite + React</h1>
 			<div className="card">
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
+				<Reactions postID={postID} />
+
 				<p>
 					Edit <code>src/App.tsx</code> and save to test HMR
 				</p>

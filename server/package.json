@@ -9,5 +9,8 @@
   "devDependencies": {
     "partykit": "0.0.31",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
   }
 }
