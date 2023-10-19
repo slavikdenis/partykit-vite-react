@@ -1,9 +1,9 @@
+import { Reactions } from './components/Reactions';
+import { getPostId } from './utils';
 import reactLogo from './assets/react.svg';
 import partyKitLogo from './assets/partykit.png';
 import viteLogo from '/vite.svg';
 import './App.css';
-import { Reactions } from './components/Reactions';
-import { getPostId } from './utils';
 
 function App() {
 	const postID = getPostId();
@@ -11,18 +11,18 @@ function App() {
 	return (
 		<>
 			<div>
-				<a href="https://vitejs.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
 				<a href="https://partykit.io" target="_blank">
 					<img
 						src={partyKitLogo}
 						className="logo partkit"
 						alt="PartyKit logo"
 					/>
+				</a>
+				<a href="https://vitejs.dev" target="_blank">
+					<img src={viteLogo} className="logo" alt="Vite logo" />
+				</a>
+				<a href="https://react.dev" target="_blank">
+					<img src={reactLogo} className="logo react" alt="React logo" />
 				</a>
 			</div>
 			<h1>PartyKit + Vite + React</h1>
