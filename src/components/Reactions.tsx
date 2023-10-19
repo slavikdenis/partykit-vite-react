@@ -1,27 +1,26 @@
+import { useCallback, useState } from 'react';
 import usePartySocket from 'partysocket/react';
 import throttle from 'lodash.throttle';
 import s from './Reactions.module.css';
-import { useCallback, useState } from 'react';
 import {
 	GO_AWAY_SENTINEL,
 	SLOW_DOWN_SENTINEL,
 	createActionMessage,
 	parseUpdateMessage,
-} from '../types';
+} from '../server/types';
 
-type Props = {
-	postID: string;
-};
+// In case of custom setup, change this to your server's host
+const host = import.meta.env.PROD
+	? window.location.origin
+	: 'http://localhost:1999';
 
-export const Reactions = ({ postID }: Props) => {
+export const Reactions = ({ postID }: { postID: string }) => {
 	const [count, setCount] = useState<number | null>(null);
 
 	const socket = usePartySocket({
-		host: import.meta.env.PARTYKIT_HOST ?? 'http://localhost:1999',
+		host,
 		room: postID,
 		onMessage(event) {
-			console.log('onMessage', event);
-
 			if (event.data === SLOW_DOWN_SENTINEL) {
 				console.log("Cool down. You're sending too many messages.");
 				return;
@@ -47,11 +46,9 @@ export const Reactions = ({ postID }: Props) => {
 		[]
 	);
 
-	const vote = (action: "upvote" | "downvote") => {
-		socket.send(
-			createActionMessage(action)
-		)
-	}
+	const vote = (action: 'upvote' | 'downvote') => {
+		socket.send(createActionMessage(action));
+	};
 
 	return (
 		<div>
@@ -61,7 +58,7 @@ export const Reactions = ({ postID }: Props) => {
 
 			<span className={s.counter}>{count ?? '-'}</span>
 
-			<button disabled={count === 0 || count === null} onClick={() => vote('downvote')}>
+			<button disabled={count === null} onClick={() => vote('downvote')}>
 				<span>👎</span>
 			</button>
 		</div>

@@ -1,11 +1,12 @@
 import reactLogo from './assets/react.svg';
+import partyKitLogo from './assets/partykit.png';
 import viteLogo from '/vite.svg';
 import './App.css';
 import { Reactions } from './components/Reactions';
 import { getPostId } from './utils';
 
 function App() {
-  const postID = getPostId();
+	const postID = getPostId();
 
 	return (
 		<>
@@ -16,17 +17,20 @@ function App() {
 				<a href="https://react.dev" target="_blank">
 					<img src={reactLogo} className="logo react" alt="React logo" />
 				</a>
+				<a href="https://partykit.io" target="_blank">
+					<img
+						src={partyKitLogo}
+						className="logo partkit"
+						alt="PartyKit logo"
+					/>
+				</a>
 			</div>
-			<h1>Vite + React</h1>
+			<h1>PartyKit + Vite + React</h1>
 			<div className="card">
 				<Reactions postID={postID} />
-
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
 			</div>
 			<p className="read-the-docs">
-				Click on the Vite and React logos to learn more
+				Click on the PartyKit, Vite and React logos to learn more
 			</p>
 		</>
 	);

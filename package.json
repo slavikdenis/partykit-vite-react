@@ -1,16 +1,20 @@
 {
-  "name": "partykit-reddit-voting",
+  "name": "partykit-vite-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "npm-run-all --parallel client:dev server:dev",
+    "client:dev": "vite",
+    "client:build": "tsc && vite build",
+    "client:preview": "vite preview",
+    "server:dev": "partykit dev",
+    "deploy": "npm run client:build && partykit deploy",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "lodash.throttle": "^4.1.1",
+    "partykit": "^0.0.32",
     "partysocket": "^0.0.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,7 +30,8 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-    "typescript": "^5.0.2",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.2.2",
     "vite": "^4.4.5"
   }
 }
