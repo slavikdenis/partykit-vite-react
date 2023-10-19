@@ -2,6 +2,9 @@
 	"name": "partykit-vite-react",
 	"main": "src/server/server.ts",
 	"compatibilityDate": "2023-10-18",
+	"build": {
+		"command": "npm run client:build"
+	},
 	"serve": {
 		"path": "dist",
 		"singlePageApp": true

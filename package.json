@@ -8,9 +8,9 @@
     "client:dev": "vite",
     "client:build": "tsc && vite build",
     "client:preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "server:dev": "partykit dev",
-    "deploy": "npm run client:build && partykit deploy",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "deploy": "partykit deploy"
   },
   "dependencies": {
     "lodash.throttle": "^4.1.1",
